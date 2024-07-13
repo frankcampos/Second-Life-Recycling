@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Navbar, //
   Container,
@@ -11,11 +12,17 @@ import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container>
-        <Link passHref href="/">
-          <Navbar.Brand>CHANGE ME</Navbar.Brand>
-        </Link>
+        <Navbar.Brand href="">
+          <Image
+            src="/public/RRRlogowithtext.png"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+            alt="Reduce Reuse Recylce Logo"
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -24,9 +31,12 @@ export default function NavBar() {
               <Nav.Link>Home</Nav.Link>
             </Link>
             <Link passHref href="/delete-me">
-              <Nav.Link>Delete Me</Nav.Link>
+              <Nav.Link>Add Item</Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut}>
+            <Link passHref href="/delete-me">
+              <Nav.Link>Cart</Nav.Link>
+            </Link>
+            <Button variant="dark" onClick={signOut}>
               Sign Out
             </Button>
           </Nav>
