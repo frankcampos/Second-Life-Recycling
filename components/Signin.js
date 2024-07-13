@@ -17,9 +17,9 @@ function Signin() {
         paddingBlock: '0 5rem',
       }}
     >
-      <h1>Hi there!</h1>
+      <h1 className="login">Reduce Reuse Recycle</h1>
       <p>Click the button below to login!</p>
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
+      <Button variant="success" type="button" size="lg" className="copy-btn" onClick={signIn}>
         Sign In
       </Button>
     </div>
