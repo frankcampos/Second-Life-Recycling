@@ -16,7 +16,7 @@ export default function NavBar() {
       <Container>
         <Navbar.Brand href="">
           <Image
-            src="/public/RRRlogowithtext.png"
+            src="/public\RRRlogowithtext.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
