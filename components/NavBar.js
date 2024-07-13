@@ -9,6 +9,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
+import logo from '../assets/rrr-logo.png';
 
 export default function NavBar() {
   return (
@@ -16,9 +17,9 @@ export default function NavBar() {
       <Container>
         <Navbar.Brand href="">
           <Image
-            src="/public/RRRlogowithtext.png"
-            width="30"
-            height="30"
+            src={logo}
+            width={40}
+            height={50}
             className="d-inline-block align-top"
             alt="Reduce Reuse Recylce Logo"
           />
