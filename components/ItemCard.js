@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Link from 'next/link';
 
 function ItemCard({ itemObj }) {
   return (
@@ -12,12 +11,9 @@ function ItemCard({ itemObj }) {
         <Card.Img variant="top" src={itemObj.image} alt={itemObj.name} style={{ height: '400px' }} />
         <p className="card-text bold">${itemObj.price}</p>
         <p className="card-text bold">${itemObj.category}</p>
-        <Link href={`/item/${itemObj.firebaseKey}`} passHref>
-          <Button variant="info" className="m-2">VIEW</Button>
-        </Link>
-        <Link href={`/item/edit/${itemObj.firebaseKey}`} passHref>
-          <Button variant="warning">EDIT</Button>
-        </Link>
+        <p className="card-text bold">${itemObj.description}</p>
+        <Button variant="info" className="m-2">VIEW</Button>
+        <Button variant="warning">EDIT</Button>
         <Button variant="danger" className="m-2">
           DELETE
         </Button>
@@ -30,9 +26,9 @@ ItemCard.propTypes = {
   itemObj: PropTypes.shape({
     image: PropTypes.string,
     name: PropTypes.string,
-    price: PropTypes.string,
-    category: PropTypes.string,
-    firebaseKey: PropTypes.string,
+    price: PropTypes.number,
+    category: PropTypes.number,
+    description: PropTypes.string,
   }).isRequired,
 };
 
