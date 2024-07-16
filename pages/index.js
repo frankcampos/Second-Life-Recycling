@@ -10,7 +10,7 @@ function Home() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    getItems.then((data) => {
+    getItems().then((data) => {
       setItems(data);
     });
   }, []);
