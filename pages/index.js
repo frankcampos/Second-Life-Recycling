@@ -1,9 +1,20 @@
+import { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
+import ItemCard from '../components/ItemCard';
+import getItems from '../api/itemData';
 
 function Home() {
   const { user } = useAuth();
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    getItems.then((data) => {
+      setItems(data);
+    });
+  }, []);
+
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -16,6 +27,11 @@ function Home() {
     >
       <h1>Hello {user.fbUser.displayName}! </h1>
       <p>Click the button below to logout!</p>
+      <div className="d-flex flex-wrap">
+        {items.map((item) => (
+          <ItemCard itemObj={item} />
+        ))}
+      </div>
       <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
         Sign Out
       </Button>
