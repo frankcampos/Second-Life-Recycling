@@ -1,5 +1,6 @@
-// import React from 'react';
+import React from 'react';
+import ItemForm from '../components/ItemForm';
 
-// export default function AddItem() {
-//   return // <itemForm />;
-// }
+export default function AddItem() {
+  return <ItemForm />;
+}
