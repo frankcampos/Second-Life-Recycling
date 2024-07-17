@@ -63,7 +63,7 @@ function ItemForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Book Image" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Item Image" className="mb-3">
         <Form.Control
           type="url"
           placeholder="Enter an image url"
@@ -73,7 +73,7 @@ function ItemForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput3" label="Book Price" className="mb-3">
+      <FloatingLabel controlId="floatingInput3" label="Item Price" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter price"
@@ -83,7 +83,7 @@ function ItemForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Item Category" className="mb-3">
+      {/* <FloatingLabel controlId="floatingInput2" label="Item Category" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Item Category"
@@ -92,18 +92,18 @@ function ItemForm({ obj }) {
           onChange={handleChange}
           required
         />
-      </FloatingLabel>
+      </FloatingLabel> */}
       <FloatingLabel controlId="floatingInput2" label="Description" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Item Description"
-          name="category"
+          name="description"
           value={formInput.description}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Vendor ID" className="mb-3">
+      {/* <FloatingLabel controlId="floatingInput2" label="Vendor ID" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Vendor ID"
@@ -112,7 +112,7 @@ function ItemForm({ obj }) {
           onChange={handleChange}
           required
         />
-      </FloatingLabel>
+      </FloatingLabel> */}
       <Button type="submit">{obj.id ? 'Update' : 'Create'} Item</Button>
     </Form>
   );
@@ -121,12 +121,10 @@ function ItemForm({ obj }) {
 ItemForm.propTypes = {
   obj: PropTypes.shape({
     item_name: propTypes.string,
-    vendor_id: propTypes.string,
     price: propTypes.string,
     image_url: propTypes.string,
     description: propTypes.string,
-    category_id: propTypes.string,
-    id: PropTypes.string,
+    id: propTypes.string,
   }),
 };
 

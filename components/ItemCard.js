@@ -19,10 +19,10 @@ function ItemCard({ itemObj, onUpdate }) {
         <p className="card-text bold">${itemObj.price}</p>
         <p className="card-text bold">${itemObj.category}</p>
         <p className="card-text bold">${itemObj.description}</p>
-        <Link href={`/recyclable_itemsedit/${itemObj.id}`} passHref>
+        <Link href={`//${itemObj.id}`} passHref>
           <Button variant="info" className="m-2">VIEW</Button>
         </Link>
-        <Link href={`/recyclable_itemsedit/${itemObj.id}`} passHref>
+        <Link href={`/edit/${itemObj.id}`} passHref>
           <Button variant="warning">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisItem} className="m-2">
