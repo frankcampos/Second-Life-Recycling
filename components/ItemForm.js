@@ -1,15 +1,16 @@
-// /* eslint-disable import/extensions */
+// // /* eslint-disable import/extensions */
 // import { useRouter } from 'next/router';
-// import PropTypes from 'prop-types';
-// import { useState } from 'react';
+// // import PropTypes from 'prop-types';
+// import { useState, useEffect } from 'react';
 // import Button from 'react-bootstrap/Button';
 // import Form from 'react-bootstrap/Form';
 // import { propTypes } from 'react-bootstrap/esm/Image';
-// import { useAuth } from '../../utils/context/AuthContext';
+// import { useAuth } from '../utils/context/authContext';
+// import { createItem, getItems, updateItem } from '../api/itemData';
 
 // const initialState = {
 //   item_name: '',
-//   pickup_location_id: '',
+//   vendor_id: '',
 //   price: '',
 //   image_url: '',
 //   description: '',
@@ -22,9 +23,7 @@
 //   const { user } = useAuth();
 
 //   useEffect(() => {
-//     getAuthors(user.uid).then(setAuthors);
-
-//     if (obj.firebaseKey) setFormInput(obj);
+//     setFormInput(obj);
 //   }, [obj, user]);
 
 //   const handleChange = (e) => {
@@ -37,13 +36,13 @@
 
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
-//     if (obj.firebaseKey) {
-//       updateBook(formInput).then(() => router.push(`/book/${obj.firebaseKey}`));
+//     if (****) {
+//       updateItem(formInput).then(() => router.push(`/recyclable_items/`));
 //     } else {
 //       const payload = { ...formInput, uid: user.uid };
-//       createBook(payload).then(({ name }) => {
+//       createItem(payload).then(({ name }) => {
 //         const patchPayload = { firebaseKey: name };
-//         updateBook(patchPayload).then(() => {
+//         updateAuthor(patchPayload).then(() => {
 //           router.push('/');
 //         });
 //       });
@@ -52,19 +51,28 @@
 
 //   return (
 //     <Form onSubmit={handleSubmit}>
-//       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Book</h2>
+//       <h2 className="text-white mt-5">{obj.**** ? 'Update' : 'Create'} Item</h2>
+//       <FloatingLabel controlId="floatingInput1" label="Item Name" className="mb-3">
+//         <Form.Control
+//           type="text"
+//           placeholder="Enter your Item Name"
+//           name="Name"
+//           value={formInput.title}
+//           onChange={handleChange}
+//           required
+//         />
+//       </FloatingLabel>
 //     </Form>
 // );
 
 // ItemForm.propTypes = {
 //   obj: PropTypes.shape({
 //     item_name: propTypes.string,
-//     pickup_location_id: propTypes.string,
+//     vendor_id: propTypes.string,
 //     price: propTypes.string,
 //     image_url: propTypes.string,
 //     description: propTypes.string,
 //     category_id: propTypes.string,
-//   // firebaseKey: PropTypes.string,
 //   }),
 // };
 
