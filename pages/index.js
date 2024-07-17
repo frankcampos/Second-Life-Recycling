@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import ItemCard from '../components/ItemCard';
-import getItems from '../api/itemData';
+import { getItems } from '../api/itemData';
 
 function Home() {
   const { user } = useAuth();
