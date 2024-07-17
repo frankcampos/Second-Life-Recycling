@@ -9,6 +9,9 @@ function Home() {
   const { user } = useAuth();
   const [items, setItems] = useState([]);
 
+  const getAllItems = () => {
+    getItems.then(setItems);
+  };
   useEffect(() => {
     getItems().then((data) => {
       setItems(data);
@@ -29,7 +32,7 @@ function Home() {
       <p>Click the button below to logout!</p>
       <div className="d-flex flex-wrap">
         {items.map((item) => (
-          <ItemCard itemObj={item} />
+          <ItemCard key={item.id} itemObj={item} onUpdate={getAllItems} />
         ))}
       </div>
       <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
