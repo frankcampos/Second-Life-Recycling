@@ -12,8 +12,8 @@ const getItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteItem = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/recyclable_items`, {
+const deleteItem = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/recyclable_items/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const createItem = (payload) => new Promise((resolve, reject) => {
 });
 
 const updateItem = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/recyclable_items/${payload}`, {
+  fetch(`${endpoint}/recyclable_items/${payload.id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -50,8 +50,8 @@ const updateItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleItem = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/recyclable_items`, {
+const getSingleItem = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/recyclable_items/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
