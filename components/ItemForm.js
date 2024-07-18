@@ -5,17 +5,17 @@ import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { FloatingLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { propTypes } from 'react-bootstrap/esm/Image';
 import { useAuth } from '../utils/context/authContext';
 import { createItem, updateItem } from '../api/itemData';
 
 const initialState = {
   item_name: '',
-  vendor_id: '',
-  price: '',
+  price: 0,
   image_url: '',
   description: '',
-  category_id: '',
+  category_id: 0,
+  vendor_id: 0,
+  user_id: '',
 };
 
 function ItemForm({ obj }) {
@@ -75,7 +75,7 @@ function ItemForm({ obj }) {
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput3" label="Item Price" className="mb-3">
         <Form.Control
-          type="text"
+          type="number"
           placeholder="Enter price"
           name="price"
           value={formInput.price}
@@ -83,16 +83,16 @@ function ItemForm({ obj }) {
           required
         />
       </FloatingLabel>
-      {/* <FloatingLabel controlId="floatingInput2" label="Item Category" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Item Category" className="mb-3">
         <Form.Control
-          type="text"
+          type="number"
           placeholder="Item Category"
-          name="category"
+          name="category_id"
           value={formInput.category_id}
           onChange={handleChange}
           required
         />
-      </FloatingLabel> */}
+      </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="Description" className="mb-3">
         <Form.Control
           type="text"
@@ -103,16 +103,18 @@ function ItemForm({ obj }) {
           required
         />
       </FloatingLabel>
-      {/* <FloatingLabel controlId="floatingInput2" label="Vendor ID" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Vendor ID"
-          name="vendor"
-          value={formInput.vendor_id}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel> */}
+      <Form.Control
+        type="hidden"
+        name="vendor_id"
+        value={formInput.vendor_id}
+        required
+      />
+      <Form.Control
+        type="hidden"
+        name="user_id"
+        value={formInput.user_id}
+        required
+      />
       <Button type="submit">{obj.id ? 'Update' : 'Create'} Item</Button>
     </Form>
   );
@@ -120,11 +122,14 @@ function ItemForm({ obj }) {
 
 ItemForm.propTypes = {
   obj: PropTypes.shape({
-    item_name: propTypes.string,
-    price: propTypes.string,
-    image_url: propTypes.string,
-    description: propTypes.string,
-    id: propTypes.string,
+    item_name: PropTypes.string,
+    price: PropTypes.number,
+    image_url: PropTypes.string,
+    description: PropTypes.string,
+    category_id: PropTypes.number,
+    id: PropTypes.string,
+    vendor_id: PropTypes.number,
+    user_id: PropTypes.string,
   }),
 };
 
