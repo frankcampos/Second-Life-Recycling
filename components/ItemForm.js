@@ -13,8 +13,8 @@ const initialState = {
   price: 0,
   image_url: '',
   description: '',
-  category_id: 0,
-  vendor_id: 0,
+  category_id: 1,
+  vendor_id: 1,
   user_id: '',
 };
 
@@ -38,7 +38,7 @@ function ItemForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.id) {
-      updateItem(formInput).then(() => router.push(`/recyclable_items/${obj.id}`));
+      updateItem(formInput).then(() => router.push(`/edit/${obj.id}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createItem(payload).then(({ name }) => {
@@ -57,7 +57,7 @@ function ItemForm({ obj }) {
         <Form.Control
           type="text"
           placeholder="Enter your Item Name"
-          name="Name"
+          name="item_name"
           value={formInput.name}
           onChange={handleChange}
           required
@@ -67,7 +67,7 @@ function ItemForm({ obj }) {
         <Form.Control
           type="url"
           placeholder="Enter an image url"
-          name="image"
+          name="image_url"
           value={formInput.image}
           onChange={handleChange}
           required

@@ -19,7 +19,7 @@ function ItemCard({ itemObj, onUpdate }) {
         <p className="card-text bold">${itemObj.price}</p>
         <p className="card-text bold">${itemObj.category}</p>
         <p className="card-text bold">${itemObj.description}</p>
-        <Link href={`//${itemObj.id}`} passHref>
+        <Link href="/index" passHref>
           <Button variant="info" className="m-2">VIEW</Button>
         </Link>
         <Link href={`/edit/${itemObj.id}`} passHref>
