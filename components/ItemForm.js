@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // // /* eslint-disable import/extensions */
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -15,7 +16,6 @@ const initialState = {
   description: '',
   category_id: 1,
   vendor_id: 1,
-  user_id: '',
 };
 
 function ItemForm({ obj }) {
@@ -40,13 +40,8 @@ function ItemForm({ obj }) {
     if (obj.id) {
       updateItem(formInput).then(() => router.push(`/edit/${obj.id}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
-      createItem(payload).then(({ name }) => {
-        const patchPayload = { id: name };
-        updateItem(patchPayload).then(() => {
-          router.push('/');
-        });
-      });
+      const payload = { ...formInput, user_id: user.id };
+      createItem(payload).then(() => router.push('/'));
     }
   };
 
@@ -127,9 +122,8 @@ ItemForm.propTypes = {
     image_url: PropTypes.string,
     description: PropTypes.string,
     category_id: PropTypes.number,
-    id: PropTypes.string,
     vendor_id: PropTypes.number,
-    user_id: PropTypes.string,
+    user_id: PropTypes.number,
   }),
 };
 
