@@ -25,16 +25,12 @@ const deleteItem = (id) => new Promise((resolve, reject) => {
 });
 
 const createItem = (payload) => new Promise((resolve, reject) => {
-  const updatePayload = {
-    ...payload, price: Number(payload.price), vendor_id: Number(payload.vendor_id), category_id: Number(payload.category_id),
-  };
-  const body = JSON.stringify(updatePayload);
   fetch(`${endpoint}/recyclable_items`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body,
+    body: JSON.stringify(payload),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
