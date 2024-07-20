@@ -14,7 +14,7 @@ const initialState = {
   price: 0,
   image_url: '',
   description: '',
-  category_id: 1,
+  category: 1,
   vendor_id: 1,
 };
 
@@ -38,7 +38,7 @@ function ItemForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.id) {
-      updateItem(formInput).then(() => router.push(`/edit/${obj.id}`));
+      updateItem({ ...formInput, vendor_id: 1 }).then(() => router.push(`/edit/${obj.id}`));
     } else {
       const payload = { ...formInput, user_id: user.id };
       createItem(payload).then(() => router.push('/'));
@@ -53,7 +53,7 @@ function ItemForm({ obj }) {
           type="text"
           placeholder="Enter your Item Name"
           name="item_name"
-          value={formInput.name}
+          value={formInput.item_name}
           onChange={handleChange}
           required
         />
@@ -63,7 +63,7 @@ function ItemForm({ obj }) {
           type="url"
           placeholder="Enter an image url"
           name="image_url"
-          value={formInput.image}
+          value={formInput.image_url}
           onChange={handleChange}
           required
         />
@@ -82,8 +82,8 @@ function ItemForm({ obj }) {
         <Form.Control
           type="number"
           placeholder="Item Category"
-          name="category_id"
-          value={formInput.category_id}
+          name="category"
+          value={formInput.category}
           onChange={handleChange}
           required
         />
@@ -121,9 +121,9 @@ ItemForm.propTypes = {
     price: PropTypes.number,
     image_url: PropTypes.string,
     description: PropTypes.string,
-    category_id: PropTypes.number,
-    vendor_id: PropTypes.number,
+    category: PropTypes.number,
     user_id: PropTypes.number,
+    vendor_id: PropTypes.number,
   }),
 };
 

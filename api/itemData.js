@@ -39,13 +39,12 @@ const createItem = (payload) => new Promise((resolve, reject) => {
 
 const updateItem = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/recyclable_items/${payload.id}`, {
-    method: 'PATCH',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(payload),
   })
-    .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });

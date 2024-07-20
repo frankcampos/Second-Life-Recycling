@@ -6,19 +6,20 @@ import Card from 'react-bootstrap/Card';
 import { deleteItem } from '../api/itemData';
 
 function ItemCard({ itemObj, onUpdate }) {
+  console.warn('this is my item object', itemObj);
   const deleteThisItem = () => {
-    if (window.confirm(`Delete ${itemObj.name}?`)) {
+    if (window.confirm(`Delete ${itemObj.item_name}?`)) {
       deleteItem(itemObj.id).then(() => onUpdate());
     }
   };
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Title>{itemObj.name}</Card.Title>
+      <Card.Title>{itemObj.item_name}</Card.Title>
       <Card.Body>
-        <Card.Img variant="top" src={itemObj.image} alt={itemObj.name} style={{ height: '400px' }} />
+        <Card.Img variant="top" src={itemObj.image_url} alt={itemObj.item_name} style={{ height: '400px' }} />
         <p className="card-text bold">${itemObj.price}</p>
-        <p className="card-text bold">${itemObj.category}</p>
-        <p className="card-text bold">${itemObj.description}</p>
+        <p className="card-text bold">{itemObj.category_id}</p>
+        <p className="card-text bold">{itemObj.description}</p>
         <Link href="/index" passHref>
           <Button variant="info" className="m-2">VIEW</Button>
         </Link>
@@ -35,10 +36,10 @@ function ItemCard({ itemObj, onUpdate }) {
 
 ItemCard.propTypes = {
   itemObj: PropTypes.shape({
-    image: PropTypes.string,
-    name: PropTypes.string,
+    image_url: PropTypes.string,
+    item_name: PropTypes.string,
     price: PropTypes.number,
-    category: PropTypes.number,
+    category_id: PropTypes.number,
     description: PropTypes.string,
     id: PropTypes.string,
   }).isRequired,
