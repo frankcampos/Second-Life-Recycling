@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
-import Link from 'next/link';
 import Card from 'react-bootstrap/Card';
-import { deleteItem } from '../api/itemData';
 
-function ItemCard({ itemObj, onUpdate }) {
+function ViewItemCard({ itemObj, onUpdate }) {
   console.warn('this is my item object', itemObj);
-  const deleteThisItem = () => {
-    if (window.confirm(`Delete ${itemObj.item_name}?`)) {
-      deleteItem(itemObj.id).then(() => onUpdate());
+  const addThisItem = () => {
+    if (window.confirm(`add ${itemObj.item_name}?`)) {
+      addThisItem(itemObj.id).then(() => onUpdate());
     }
   };
   return (
@@ -20,21 +18,15 @@ function ItemCard({ itemObj, onUpdate }) {
         <p className="card-text bold">${itemObj.price}</p>
         <p className="card-text bold">{itemObj.category_id}</p>
         <p className="card-text bold">{itemObj.description}</p>
-        <Link Link href={`/view/${itemObj.id}`} passHref>
-          <Button variant="info" className="m-2">VIEW</Button>
-        </Link>
-        <Link href={`/edit/${itemObj.id}`} passHref>
-          <Button variant="warning">EDIT</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisItem} className="m-2">
-          DELETE
+        <Button variant="danger" onClick={addThisItem} className="m-2">
+          Add to Cart
         </Button>
       </Card.Body>
     </Card>
   );
 }
 
-ItemCard.propTypes = {
+ViewItemCard.propTypes = {
   itemObj: PropTypes.shape({
     image_url: PropTypes.string,
     item_name: PropTypes.string,
@@ -46,4 +38,4 @@ ItemCard.propTypes = {
   onUpdate: PropTypes.func.isRequired,
 };
 
-export default ItemCard;
+export default ViewItemCard;
