@@ -10,7 +10,7 @@ function Home() {
   const [items, setItems] = useState([]);
 
   const getAllItems = () => {
-    getItems.then(setItems);
+    getItems().then(setItems);
   };
   useEffect(() => {
     getItems().then((data) => {
