@@ -59,6 +59,7 @@ const getSingleItem = (id) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
+
 export {
   getItems,
   deleteItem,

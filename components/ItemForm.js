@@ -38,7 +38,7 @@ function ItemForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.id) {
-      updateItem({ ...formInput, vendor_id: 1 }).then(() => router.push(`/edit/${obj.id}`));
+      updateItem({ ...formInput, vendor_id: 1 }).then(() => router.push('/'));
     } else {
       const payload = { ...formInput, user_id: user.id };
       createItem(payload).then(() => router.push('/'));
