@@ -13,7 +13,7 @@ function ItemCard({ itemObj, onUpdate }) {
     }
   };
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card style={{ width: '18rem', margin: '10px', backgroundColor: 'rgb(175, 197, 168)' }}>
       <Card.Title>{itemObj.item_name}</Card.Title>
       <Card.Body>
         <Card.Img variant="top" src={itemObj.image_url} alt={itemObj.item_name} style={{ height: '400px' }} />
