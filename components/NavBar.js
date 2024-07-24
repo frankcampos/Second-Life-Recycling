@@ -13,8 +13,8 @@ import logo from '../assets/rrr-logo.png';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-      <Container>
+    <Navbar style={{ backgroundColor: 'rgb(175, 197, 168)' }} collapseOnSelect expand="lg">
+      <Container fluid>
         <Navbar.Brand href="">
           <Image
             src={logo}
