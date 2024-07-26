@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function ViewItemCard({ itemObj, onUpdate }) {
   console.warn('this is my item object', itemObj);
+  // eslint-disable-next-line no-unused-vars
   const addThisItem = () => {
     if (window.confirm(`add ${itemObj.item_name}?`)) {
       addThisItem(itemObj.id).then(() => onUpdate());
@@ -18,9 +18,6 @@ function ViewItemCard({ itemObj, onUpdate }) {
         <p className="card-text bold">${itemObj.price}</p>
         <p className="card-text bold">{itemObj.category_id}</p>
         <p className="card-text bold">{itemObj.description}</p>
-        <Button variant="danger" onClick={addThisItem} className="m-2">
-          Add to Cart
-        </Button>
       </Card.Body>
     </Card>
   );

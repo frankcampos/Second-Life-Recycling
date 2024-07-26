@@ -34,7 +34,7 @@ export default function NavBar() {
             <Link passHref href="/new">
               <Nav.Link>Add Item</Nav.Link>
             </Link>
-            <Link passHref href="">
+            <Link passHref href="/cart">
               <Nav.Link>Cart</Nav.Link>
             </Link>
             <Button variant="dark" onClick={signOut}>
