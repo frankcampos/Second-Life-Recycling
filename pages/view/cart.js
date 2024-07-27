@@ -1,13 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CartItem from '../../components/CartItem';
+import { displayItem } from '../../api/cartData';
 
-export default function Cart() {
-  const [cart, setCart] = useState([]);
+const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const payload = { shopping_cart_id: 1 };
+
+    displayItem(payload)
+      .then((data) => {
+        setCartItems(data.cart_items);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message || 'Failed to fetch cart items');
+        setLoading(false);
+      });
+  }, []);
 
   const removeFromCart = (itemId) => {
-    const updatedCart = cart.filter((item) => item.id !== itemId);
-    setCart(updatedCart);
+    const updatedCartItems = cartItems.filter((cartItem) => cartItem.item.id !== itemId);
+    setCartItems(updatedCartItems);
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div
@@ -21,10 +46,20 @@ export default function Cart() {
     >
       <h1>Your Cart</h1>
       <div className="d-flex flex-wrap">
-        {cart.map((item) => (
-          <CartItem key={item.id} item={item} onDelete={removeFromCart} />
-        ))}
+        {cartItems.length > 0 ? (
+          cartItems.map((cartItem) => (
+            <CartItem
+              key={cartItem.id}
+              item={cartItem.item}
+              onDelete={() => removeFromCart(cartItem.item.id)}
+            />
+          ))
+        ) : (
+          <p>Your cart is empty.</p>
+        )}
       </div>
     </div>
   );
-}
+};
+
+export default Cart;
