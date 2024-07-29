@@ -21,7 +21,7 @@ export default function ViewItem() {
   }, [id]);
 
   const handleAddToCart = () => {
-    if (editobj.id) {
+    if (editobj.id && user) {
       addToCart({ itemId: editobj.id, userId: user.id })
         .then(() => {
           alert(`${editobj.item_name} added to cart!`);
@@ -30,6 +30,8 @@ export default function ViewItem() {
           console.error('Error adding item to cart:', error);
           alert('Failed to add item to cart. Please try again.');
         });
+    } else {
+      alert('User is not authenticated.');
     }
   };
 
