@@ -1,6 +1,6 @@
 const endpoint = process.env.NEXT_PUBLIC_DATABASE_URL;
 
-const getCartItems = () => new Promise((resolve, reject) => {
+const getCart = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/cart`, {
     method: 'GET',
     headers: {
@@ -12,9 +12,9 @@ const getCartItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const removeItem = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/cart/remove_from_cart`, {
-    method: 'GET',
+const removeItem = (itemId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cart/remove_from_cart/${itemId}`, {
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -50,7 +50,7 @@ const displayItem = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getCartItems,
+  getCart,
   removeItem,
   addToCart,
   displayItem,

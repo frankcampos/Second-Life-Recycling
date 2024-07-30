@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import CartItem from '../components/CartItem';
-import { getCartItems } from '../api/cartData';
+import { getCart, removeItem } from '../api/cartData';
+import Loading from '../components/Loading';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getCartItems().then((data) => {
+    getCart().then((data) => {
       setCartItems(data);
       setLoading(false);
     });
   }, []);
 
-  const removeFromCart = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  const handleRemoveItem = (itemId) => {
+    removeItem(itemId).then(() => {
+      setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+    });
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
@@ -27,7 +30,7 @@ const Cart = () => {
       style={{
         height: '90vh',
         padding: '30px',
-        maxWidth: '400px',
+        maxWidth: '800px',
         margin: '0 auto',
       }}
     >
@@ -38,7 +41,7 @@ const Cart = () => {
             <CartItem
               key={cartItem.id}
               item={cartItem}
-              onDelete={() => removeFromCart(cartItem.id)}
+              onDelete={handleRemoveItem}
             />
           ))
         ) : (
