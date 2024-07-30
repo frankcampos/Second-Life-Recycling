@@ -4,7 +4,7 @@ import { displayItem, removeItem } from '../api/cartData';
 import Loading from '../components/Loading';
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState({ cart_items: [], total: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -13,10 +13,13 @@ const Cart = () => {
       setLoading(false);
     });
   }, []);
-  console.warn('this is my cartItems', cartItems);
+
   const handleRemoveItem = (itemId) => {
     removeItem(itemId).then(() => {
-      setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+      setCartItems((prevState) => ({
+        ...prevState,
+        cart_items: prevState.cart_items.filter((item) => item.id !== itemId),
+      }));
     });
   };
 
@@ -36,7 +39,7 @@ const Cart = () => {
     >
       <h1>Your Cart</h1>
       <div className="d-flex flex-wrap">
-        {cartItems && cartItems.cart_items && cartItems.cart_items.length > 0 ? (
+        {cartItems.cart_items.length > 0 ? (
           cartItems.cart_items.map((cartItem) => (
             <CartItem
               key={cartItem.id}
@@ -47,7 +50,7 @@ const Cart = () => {
         ) : (
           <p>Your cart is empty.</p>
         )}
-        <h1 style={{ color: 'white' }}>total: {cartItems.total}</h1>
+        <h1 className="text-black mt-5">Total: ${cartItems.total}</h1>
       </div>
     </div>
   );
