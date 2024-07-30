@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  Navbar, //
+  Navbar,
   Container,
   Nav,
   Button,
@@ -13,21 +13,20 @@ import logo from '../assets/rrr-logo.png';
 
 export default function NavBar() {
   return (
-    <Navbar style={{ backgroundColor: 'rgb(175, 197, 168)' }} collapseOnSelect expand="lg">
+    <Navbar style={{ backgroundColor: 'rgb(175, 197, 168)', marginBottom: '50px' }} collapseOnSelect expand="lg">
       <Container fluid>
         <Navbar.Brand href="">
           <Image
             src={logo}
-            width={40}
+            width={70}
             height={50}
             className="d-inline-block align-top"
-            alt="Reduce Reuse Recylce Logo"
+            alt="Reduce Reuse Recycle Logo"
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
@@ -37,6 +36,8 @@ export default function NavBar() {
             <Link passHref href="/cart">
               <Nav.Link>Cart</Nav.Link>
             </Link>
+          </Nav>
+          <Nav className="ms-auto">
             <Button variant="dark" onClick={signOut}>
               Sign Out
             </Button>

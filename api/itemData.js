@@ -60,10 +60,20 @@ const getSingleItem = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const searchItems = (searchValue) => new Promise((resolve, reject) => {
+  getItems()
+    .then((items) => {
+      const filteredItems = items.filter((item) => item.item_name.toLowerCase().includes(searchValue.toLowerCase()));
+      resolve(filteredItems);
+    })
+    .catch(reject);
+});
+
 export {
   getItems,
   deleteItem,
   createItem,
   updateItem,
   getSingleItem,
+  searchItems,
 };
