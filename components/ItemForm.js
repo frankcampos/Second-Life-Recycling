@@ -50,7 +50,7 @@ function ItemForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Item</h2>
+      <h2 className="text-black mt-5">{obj.id ? 'Update' : 'Create'} Item</h2>
       <FloatingLabel controlId="floatingInput1" label="Item Name" className="mb-3">
         <Form.Control
           type="text"
@@ -121,7 +121,7 @@ function ItemForm({ obj }) {
         value={formInput.user_id}
         required
       />
-      <Button type="submit">{obj.id ? 'Update' : 'Create'} Item</Button>
+      <Button variant="outline-primary" type="submit">{obj.id ? 'Update' : 'Create'} Item</Button>
     </Form>
   );
 }

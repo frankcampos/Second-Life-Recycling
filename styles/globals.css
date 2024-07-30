@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+BE+VLG:wght@100..400&family=Playwrite+CU:wght@100..400&display=swap');
 
 html,
 body {
@@ -6,6 +7,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  width: 100%;
+  height: 100%;
 }
 
 a {
@@ -18,6 +21,55 @@ a {
 }
 
 body {
-  background-color: #d8aa4d;
-  background-image: url(https://static.vecteezy.com/system/resources/previews/022/715/810/non_2x/3d-rendering-green-recycle-sign-with-globe-on-background-save-the-world-and-environment-concept-generat-ai-free-photo.jpg);
+  background-image: url(https://img.freepik.com/premium-photo/painting-tree-sea_1063427-75.jpg?w=1060);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.navbar {
+  padding: 1;
+}
+
+.nav-link {
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  padding: 10px 15px;
+  font-family: "Playwrite BE VLG", cursive;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.card {
+  background-color: rgba(252, 252, 252, 0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.text-black {
+  font-family: "Playwrite BE VLG", cursive;
 }

@@ -38,7 +38,7 @@ export default function ViewItem() {
   return (
     <>
       <ViewItemCard itemObj={editobj} />
-      <Button variant="primary" onClick={handleAddToCart} className="m-2">
+      <Button variant="outline-primary" onClick={handleAddToCart} className="m-2">
         Add to Cart
       </Button>
     </>
