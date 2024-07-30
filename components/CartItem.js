@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
@@ -7,7 +8,7 @@ function CartItem({ item, onDelete }) {
   const handleDelete = () => {
     onDelete(item.id);
   };
-
+  console.warn('this is my carttttt', item);
   return (
     <Card style={{
       width: '30rem', height: '12rem', margin: '10px', display: 'flex', flexDirection: 'row',
@@ -15,7 +16,7 @@ function CartItem({ item, onDelete }) {
     >
       <Card.Img
         variant="left"
-        src={item.image_url}
+        src={item.item.image_url}
         alt={item.item_name}
         style={{
           height: '100%', objectFit: 'cover', width: '30%', maxWidth: '150px',
@@ -25,8 +26,8 @@ function CartItem({ item, onDelete }) {
         display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '70%',
       }}
       >
-        <Card.Title style={{ fontSize: '1.25rem' }}>{item.item_name}</Card.Title>
-        <Card.Text style={{ fontSize: '1rem' }}>${item.price}</Card.Text>
+        <Card.Title style={{ fontSize: '1.25rem' }}>{item.item.item_name}</Card.Title>
+        <Card.Text style={{ fontSize: '1rem' }}>${item.item.price}</Card.Text>
         <Button variant="danger" onClick={handleDelete} style={{ marginTop: 'auto' }}>Delete</Button>
       </Card.Body>
     </Card>

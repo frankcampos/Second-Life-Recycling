@@ -13,7 +13,7 @@ const Cart = () => {
       setLoading(false);
     });
   }, []);
-
+  console.warn('this is my cartItems', cartItems);
   const handleRemoveItem = (itemId) => {
     removeItem(itemId).then(() => {
       setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
@@ -36,8 +36,8 @@ const Cart = () => {
     >
       <h1>Your Cart</h1>
       <div className="d-flex flex-wrap">
-        {cartItems.length > 0 ? (
-          cartItems.map((cartItem) => (
+        {cartItems && cartItems.cart_items && cartItems.cart_items.length > 0 ? (
+          cartItems.cart_items.map((cartItem) => (
             <CartItem
               key={cartItem.id}
               item={cartItem}
@@ -47,6 +47,7 @@ const Cart = () => {
         ) : (
           <p>Your cart is empty.</p>
         )}
+        <h1 style={{ color: 'white' }}>total: {cartItems.total}</h1>
       </div>
     </div>
   );
