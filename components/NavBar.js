@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -7,11 +7,26 @@ import {
   Container,
   Nav,
   Button,
+  Form,
+  FormControl,
 } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 import { signOut } from '../utils/auth';
 import logo from '../assets/rrr-logo.png';
 
 export default function NavBar() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
+  };
+
   return (
     <Navbar style={{ backgroundColor: 'rgb(175, 197, 168)', marginBottom: '50px' }} collapseOnSelect expand="lg">
       <Container fluid>
@@ -37,6 +52,17 @@ export default function NavBar() {
               <Nav.Link>Cart</Nav.Link>
             </Link>
           </Nav>
+          <Form className="d-flex" onSubmit={handleSearchSubmit}>
+            <FormControl
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <Button variant="outline-light" type="submit">Search</Button>
+          </Form>
           <Nav className="ms-auto">
             <Button variant="dark" onClick={signOut}>
               Sign Out
