@@ -18,7 +18,7 @@ function ItemCard({ itemObj, onUpdate }) {
       <Card.Body>
         <Card.Img variant="top" src={itemObj.image_url} alt={itemObj.item_name} style={{ height: '400px' }} />
         <p className="card-text bold">${itemObj.price}</p>
-        <p className="card-text bold">{itemObj.category_id}</p>
+        <p className="card-text bold">{itemObj.category.category_name}</p>
         <p className="card-text bold">{itemObj.description}</p>
         <Link Link href={`/view/${itemObj.id}`} passHref>
           <Button variant="info" className="m-2">VIEW</Button>
@@ -39,7 +39,7 @@ ItemCard.propTypes = {
     image_url: PropTypes.string,
     item_name: PropTypes.string,
     price: PropTypes.number,
-    category_id: PropTypes.number,
+    category: PropTypes.string,
     description: PropTypes.string,
     id: PropTypes.string,
   }).isRequired,

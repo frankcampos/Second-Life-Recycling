@@ -8,6 +8,7 @@ import { FloatingLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../utils/context/authContext';
 import { createItem, updateItem } from '../api/itemData';
+import getCategory from '../api/categoryData';
 
 const initialState = {
   item_name: '',
@@ -20,10 +21,12 @@ const initialState = {
 
 function ItemForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [categories, setCategories] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
+    getCategory().then(setCategories);
     if (obj.id) setFormInput(obj);
   }, [obj, user]);
 
@@ -79,14 +82,22 @@ function ItemForm({ obj }) {
         />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="Item Category" className="mb-3">
-        <Form.Control
+        <Form.Select
           type="number"
           placeholder="Item Category"
           name="category"
           value={formInput.category}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">Select a Category</option>
+          {
+           categories.map((cat) => (
+             <option>{cat.category_name}
+             </option>
+           ))
+            }
+        </Form.Select>
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="Description" className="mb-3">
         <Form.Control
