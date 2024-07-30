@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CartItem from '../components/CartItem';
-import { getCart, removeItem } from '../api/cartData';
+import { displayItem, removeItem } from '../api/cartData';
 import Loading from '../components/Loading';
 
 const Cart = () => {
@@ -8,7 +8,7 @@ const Cart = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getCart().then((data) => {
+    displayItem({ shopping_cart_id: 1 }).then((data) => {
       setCartItems(data);
       setLoading(false);
     });
