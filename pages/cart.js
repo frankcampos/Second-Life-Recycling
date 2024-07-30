@@ -31,7 +31,7 @@ const Cart = () => {
     <div
       className="d-flex justify-content-center align-items-center"
       style={{
-        minHeight: 'calc(100vh - 60px)',
+        minHeight: '80vh',
         padding: '30px',
         maxWidth: '800px',
         margin: '0 auto',
