@@ -29,27 +29,43 @@ const Cart = () => {
 
   return (
     <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
+      className="d-flex justify-content-center align-items-center"
       style={{
-        height: '90vh',
+        minHeight: 'calc(100vh - 60px)',
         padding: '30px',
         maxWidth: '800px',
         margin: '0 auto',
       }}
     >
-      <h1>Your Cart</h1>
-      <div className="d-flex flex-wrap">
-        {cartItems.cart_items.length > 0 ? (
-          cartItems.cart_items.map((cartItem) => (
-            <CartItem
-              key={cartItem.id}
-              item={cartItem}
-              onDelete={handleRemoveItem}
-            />
-          ))
-        ) : (
-          <p>Your cart is empty.</p>
-        )}
+      <div
+        className="text-center"
+        style={{
+          width: '100%',
+        }}
+      >
+        <h1>Your Cart</h1>
+        <div
+          className="d-flex flex-column align-items-center"
+          style={{
+            maxHeight: '400px',
+            overflowY: 'auto',
+            border: '1px solid #ddd',
+            padding: '10px',
+            borderRadius: '5px',
+          }}
+        >
+          {cartItems.cart_items.length > 0 ? (
+            cartItems.cart_items.map((cartItem) => (
+              <CartItem
+                key={cartItem.id}
+                item={cartItem}
+                onDelete={handleRemoveItem}
+              />
+            ))
+          ) : (
+            <p>Your cart is empty.</p>
+          )}
+        </div>
         <h1 className="text-black mt-5">Total: ${cartItems.total}</h1>
       </div>
     </div>
