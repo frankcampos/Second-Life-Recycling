@@ -8,7 +8,7 @@ const Cart = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    displayItem({ shopping_cart_id: 1 }).then((data) => {
+    displayItem({ shopping_cart_id: 1, item_id: 1 }).then((data) => {
       setCartItems(data);
       setLoading(false);
     });
