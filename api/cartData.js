@@ -12,12 +12,13 @@ const getCart = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const removeItem = (itemId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/cart/remove_from_cart/${itemId}`, {
-    method: 'DELETE',
+const removeItem = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cart/remove_from_cart`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify(payload),
   })
     .then((data) => resolve((data)))
     .catch(reject);
