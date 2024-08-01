@@ -8,14 +8,14 @@ const Cart = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    displayItem({ shopping_cart_id: 1, item_id: 1 }).then((data) => {
+    displayItem({ shopping_cart_id: 1 }).then((data) => {
       setCartItems(data);
       setLoading(false);
     });
   }, []);
 
   const handleRemoveItem = (itemId) => {
-    removeItem(itemId).then(() => {
+    removeItem({ shopping_cart_id: 1, item_id: itemId }).then(() => {
       setCartItems((prevState) => ({
         ...prevState,
         cart_items: prevState.cart_items.filter((item) => item.id !== itemId),
