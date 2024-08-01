@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 function CartItem({ item, onDelete }) {
+  console.log(item);
   const handleDelete = () => {
     onDelete(item.id);
   };
