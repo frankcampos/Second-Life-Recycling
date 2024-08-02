@@ -12,6 +12,7 @@ function Home() {
   };
   useEffect(() => {
     getItems().then((data) => {
+      console.warn(data);
       setItems(data);
     });
   }, []);
