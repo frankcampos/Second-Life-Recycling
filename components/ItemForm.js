@@ -27,7 +27,11 @@ function ItemForm({ obj }) {
 
   useEffect(() => {
     getCategory().then(setCategories);
-    if (obj.id) setFormInput(obj);
+    if (obj.id) {
+      setFormInput(obj);
+      const catId = obj.category.id;
+      setFormInput((preVal) => ({ ...preVal, category: catId }));
+    }
   }, [obj, user]);
 
   const handleChange = (e) => {
@@ -37,17 +41,17 @@ function ItemForm({ obj }) {
       [name]: value,
     }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.id) {
+      console.warn('updateItem', formInput);
       updateItem({ ...formInput, vendor_id: 1 }).then(() => router.push('/'));
     } else {
       const payload = { ...formInput, user_id: user.id };
       createItem(payload).then(() => router.push('/'));
+      console.warn(payload);
     }
   };
-
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-black mt-5">{obj.id ? 'Update' : 'Create'} Item</h2>
@@ -90,10 +94,10 @@ function ItemForm({ obj }) {
           onChange={handleChange}
           required
         >
-          <option value="">Select a Category</option>
+          <option>Select a Category</option>
           {
            categories.map((cat) => (
-             <option>{cat.category_name}
+             <option value={cat.id}>{cat.category_name}
              </option>
            ))
             }
