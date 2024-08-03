@@ -8,19 +8,35 @@ const Cart = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    displayItem({ shopping_cart_id: 1 }).then((data) => {
-      setCartItems(data);
-      setLoading(false);
-    });
+    displayItem({ shopping_cart_id: 1 })
+      .then((data) => {
+        setCartItems(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setCartItems({ cart_items: [], total: 0 });
+        setLoading(false);
+      });
   }, []);
 
   const handleRemoveItem = (itemId) => {
-    removeItem({ shopping_cart_id: 1, item_id: itemId }).then(() => {
-      setCartItems((prevState) => ({
-        ...prevState,
-        cart_items: prevState.cart_items.filter((item) => item.id !== itemId),
-      }));
-    });
+    console.log('Request to remove item with id:', itemId);
+    removeItem({ shopping_cart_id: 1, item_id: itemId })
+      .then(() => {
+        setCartItems((prevState) => {
+          const updatedItems = prevState.cart_items.filter((item) => item.item.id !== itemId);
+          const updatedTotal = updatedItems.reduce((acc, item) => acc + parseFloat(item.item.price), 0);
+
+          return {
+            ...prevState,
+            cart_items: updatedItems,
+            total: updatedTotal,
+          };
+        });
+      })
+      .catch((error) => {
+        console.error('Failed to remove item:', error);
+      });
   };
 
   if (loading) {
@@ -37,12 +53,7 @@ const Cart = () => {
         margin: '0 auto',
       }}
     >
-      <div
-        className="text-center"
-        style={{
-          width: '100%',
-        }}
-      >
+      <div className="text-center" style={{ width: '100%' }}>
         <h1>Your Cart</h1>
         <div
           className="d-flex flex-column align-items-center"
@@ -57,8 +68,8 @@ const Cart = () => {
           {cartItems.cart_items.length > 0 ? (
             cartItems.cart_items.map((cartItem) => (
               <CartItem
-                key={cartItem.id}
-                item={cartItem}
+                key={cartItem.item.id}
+                item={cartItem.item}
                 onDelete={handleRemoveItem}
               />
             ))
@@ -66,7 +77,7 @@ const Cart = () => {
             <p>Your cart is empty.</p>
           )}
         </div>
-        <h1 className="text-black mt-5">Total: ${cartItems.total}</h1>
+        <h1 className="text-black mt-5">Total: ${cartItems.total.toFixed(2)}</h1>
       </div>
     </div>
   );
