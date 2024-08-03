@@ -29,7 +29,7 @@ function CartItem({ item, onDelete }) {
       >
         <Card.Title style={{ fontSize: '1.25rem' }}>{item.item_name}</Card.Title>
         <Card.Text style={{ fontSize: '1rem' }}>${item.price}</Card.Text>
-        <Button variant="danger" onClick={handleDelete} style={{ marginTop: 'auto' }}>Delete</Button>
+        <Button variant="danger" onClick={handleDelete} style={{ marginTop: 'auto' }}>Remove</Button>
       </Card.Body>
     </Card>
   );
