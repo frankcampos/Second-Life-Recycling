@@ -5,11 +5,11 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 function CartItem({ item, onDelete }) {
-  console.log(item);
   const handleDelete = () => {
+    console.log('Deleting item with id:', item.id);
     onDelete(item.id);
   };
-  console.warn('this is my carttttt', item);
+
   return (
     <Card style={{
       width: '30rem', height: '12rem', margin: '10px', display: 'flex', flexDirection: 'row',
@@ -17,7 +17,7 @@ function CartItem({ item, onDelete }) {
     >
       <Card.Img
         variant="left"
-        src={item.item.image_url}
+        src={item.image_url}
         alt={item.item_name}
         style={{
           height: '100%', objectFit: 'cover', width: '30%', maxWidth: '150px',
@@ -27,8 +27,8 @@ function CartItem({ item, onDelete }) {
         display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '70%',
       }}
       >
-        <Card.Title style={{ fontSize: '1.25rem' }}>{item.item.item_name}</Card.Title>
-        <Card.Text style={{ fontSize: '1rem' }}>${item.item.price}</Card.Text>
+        <Card.Title style={{ fontSize: '1.25rem' }}>{item.item_name}</Card.Title>
+        <Card.Text style={{ fontSize: '1rem' }}>${item.price}</Card.Text>
         <Button variant="danger" onClick={handleDelete} style={{ marginTop: 'auto' }}>Delete</Button>
       </Card.Body>
     </Card>
@@ -37,10 +37,10 @@ function CartItem({ item, onDelete }) {
 
 CartItem.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    image_url: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     item_name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    price: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired,
 };
