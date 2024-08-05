@@ -34,8 +34,7 @@ const Cart = () => {
           };
         });
       })
-      .catch((error) => {
-        console.error('Failed to remove item:', error);
+      .catch(() => {
       });
   };
 
