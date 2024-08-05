@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 
 function CartItem({ item, onDelete }) {
   const handleDelete = () => {
-    console.log('Deleting item with id:', item.id);
     onDelete(item.id);
   };
 
