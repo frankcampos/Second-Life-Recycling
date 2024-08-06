@@ -20,7 +20,6 @@ const Cart = () => {
   }, []);
 
   const handleRemoveItem = (itemId) => {
-    console.log('Request to remove item with id:', itemId);
     removeItem({ shopping_cart_id: 1, item_id: itemId })
       .then(() => {
         setCartItems((prevState) => {

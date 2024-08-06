@@ -11,6 +11,7 @@
 // const initialState = {
 //   item_name: '',
 //   category: 1,
+//   category_name: '',
 //   vendor_id: 1,
 // };
 
@@ -20,28 +21,28 @@
 //   const router = useRouter();
 //   const { user } = useAuth();
 
-//   useEffect(() => {
-//     getCategory().then(setCategories);
-//     if (obj.id) setCatInput(obj);
-//   }, [obj, user]);
+// //   useEffect(() => {
+// //     getCategory().then(setCategories);
+// //     if (obj.id) setCatInput(obj);
+// //   }, [obj, user]);
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setCatInput((prevFormInput) => ({
-//       ...prevFormInput,
-//       [name]: value,
-//     }));
-//   };
+// //   const handleChange = (e) => {
+// //     const { name, value } = e.target;
+// //     setCatInput((prevFormInput) => ({
+// //       ...prevFormInput,
+// //       [name]: value,
+// //     }));
+// //   };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (obj.id) {
-//       updateItem({ ...catInput, vendor_id: 1 }).then(() => router.push('/'));
-//     } else {
-//       const payload = { ...catInput, user_id: user.id };
-//       createItem(payload).then(() => router.push('/'));
-//     }
-//   };
+// //   const handleSubmit = (e) => {
+// //     e.preventDefault();
+// //     if (obj.id) {
+// //       updateItem({ ...catInput, vendor_id: 1 }).then(() => router.push('/'));
+// //     } else {
+// //       const payload = { ...catInput, user_id: user.id };
+// //       createItem(payload).then(() => router.push('/'));
+// //     }
+// //   };
 
 //   return (
 //     <Form onSubmit={handleSubmit}>
@@ -78,6 +79,7 @@
 //     category: PropTypes.number,
 //     user_id: PropTypes.number,
 //     vendor_id: PropTypes.number,
+//     category_name: PropTypes.string,
 //   }),
 // };
 
