@@ -14,7 +14,7 @@ const Cart = () => {
   const router = useRouter();
 
   useEffect(() => {
-    displayItem({ shopping_cart_id: 1 })
+    displayItem({ shopping_cart_id: 3 })
       .then((data) => {
         setCartItems(data);
         setLoading(false);
@@ -26,7 +26,7 @@ const Cart = () => {
   }, []);
 
   const handleRemoveItem = (itemId) => {
-    removeItem({ shopping_cart_id: 1, item_id: itemId })
+    removeItem({ shopping_cart_id: 3, item_id: itemId })
       .then(() => {
         setCartItems((prevState) => {
           const updatedItems = prevState.cart_items.filter((item) => item.item.id !== itemId);
@@ -44,7 +44,7 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    checkoutCart({ shopping_cart_id: 1 })
+    checkoutCart({ shopping_cart_id: 3 })
       .then(() => {
         setCartItems({ cart_items: [], total: 0 });
         setModalMessage('Thank you for shopping!');
@@ -109,7 +109,6 @@ const Cart = () => {
         </Button>
       </div>
 
-      {/* Modal Component */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Checkout</Modal.Title>
