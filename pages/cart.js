@@ -14,7 +14,7 @@ const Cart = () => {
   const router = useRouter();
 
   useEffect(() => {
-    displayItem({ shopping_cart_id: 3 })
+    displayItem({ shopping_cart_id: 1 })
       .then((data) => {
         setCartItems(data);
         setLoading(false);
@@ -26,7 +26,7 @@ const Cart = () => {
   }, []);
 
   const handleRemoveItem = (itemId) => {
-    removeItem({ shopping_cart_id: 3, item_id: itemId })
+    removeItem({ shopping_cart_id: 1, item_id: itemId })
       .then(() => {
         setCartItems((prevState) => {
           const updatedItems = prevState.cart_items.filter((item) => item.item.id !== itemId);
@@ -44,7 +44,7 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    checkoutCart({ shopping_cart_id: 3 })
+    checkoutCart({ shopping_cart_id: 1 })
       .then(() => {
         setCartItems({ cart_items: [], total: 0 });
         setModalMessage('Thank you for shopping!');
