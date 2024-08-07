@@ -50,9 +50,23 @@ const displayItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const checkoutCart = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cart/checkout`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getCart,
   removeItem,
   addToCart,
   displayItem,
+  checkoutCart,
 };
