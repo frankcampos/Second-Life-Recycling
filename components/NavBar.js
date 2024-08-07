@@ -48,6 +48,12 @@ export default function NavBar() {
             <Link passHref href="/new">
               <Nav.Link>Add Item</Nav.Link>
             </Link>
+            <Link passHref href="/category">
+              <Nav.Link>Categories</Nav.Link>
+            </Link>
+            <Link passHref href="/categoryNew">
+              <Nav.Link>Add a Category</Nav.Link>
+            </Link>
             <Link passHref href="/cart">
               <Nav.Link>Cart</Nav.Link>
             </Link>

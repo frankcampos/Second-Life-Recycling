@@ -12,8 +12,8 @@ const getCategory = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteCategory = (id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}//categories/${id}`, {
+const deleteCategory = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}//categories`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -36,8 +36,8 @@ const createCategory = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleCategory = (id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/categories/${id}`, {
+const getSingleCategory = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/categories/`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -47,7 +47,6 @@ const getSingleCategory = (id) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
-
 export {
   getCategory, getSingleCategory, createCategory, deleteCategory,
 };
