@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import CategoryForm from '../components/categoryFrom';
 import { getCategory } from '../api/categoryData';
+import CategoryCard from '../components/CategoryCard';
 
 export default function AddCategory() {
   const [categories, setCategories] = useState([]);
@@ -19,7 +19,7 @@ export default function AddCategory() {
     <div>
       <div width="50rem" className="d-flex flex-wrap justify-content-evenly">
         {categories.map((cate) => (
-          <CategoryForm key={cate.id} cateObj={cate} onUpdate={getAllCategories} />
+          <CategoryCard key={cate.id} cateObj={cate} onUpdate={getAllCategories} />
         ))}
       </div>
     </div>
