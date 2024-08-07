@@ -51,6 +51,12 @@ export default function NavBar() {
             <Link passHref href="/cart">
               <Nav.Link>Cart</Nav.Link>
             </Link>
+            <Link passHref href="/category">
+              <Nav.Link>Categories</Nav.Link>
+            </Link>
+            <Link passHref href="/categoryNew">
+              <Nav.Link>Add a Category</Nav.Link>
+            </Link>
           </Nav>
           <Form className="d-flex" onSubmit={handleSearchSubmit}>
             <FormControl

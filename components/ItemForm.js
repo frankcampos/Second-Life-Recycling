@@ -8,7 +8,7 @@ import { FloatingLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../utils/context/authContext';
 import { createItem, updateItem } from '../api/itemData';
-import getCategory from '../api/categoryData';
+import { getCategory } from '../api/categoryData';
 
 const initialState = {
   item_name: '',
@@ -44,7 +44,6 @@ function ItemForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.id) {
-      console.warn('updateItem', formInput);
       updateItem({ ...formInput, vendor_id: 1 }).then(() => router.push('/'));
     } else {
       const payload = { ...formInput, user_id: user.id };
