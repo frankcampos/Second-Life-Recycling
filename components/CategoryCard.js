@@ -13,7 +13,7 @@ function CategoryCard({ cateObj, onUpdate }) {
   return (
     <Card className="card" style={{ width: '18rem', margin: '10px', border: '1px solid' }}>
       <Card.Body>
-        <p className="card-text bold">{cateObj.category.category_name}</p>
+        <p className="card-text bold">{cateObj.category_name}</p>
         <Button variant="outline-danger" onClick={deleteThisCategory} className="m-2">
           DELETE
         </Button>
