@@ -7,7 +7,8 @@ import { deleteCategory } from '../api/categoryData';
 function CategoryCard({ cateObj, onUpdate }) {
   const deleteThisCategory = () => {
     if (window.confirm(`Delete ${cateObj.category_name}?`)) {
-      deleteCategory(cateObj.category).then(() => onUpdate());
+      console.warn(cateObj);
+      deleteCategory(cateObj.id).then(() => onUpdate());
     }
   };
   return (
@@ -24,7 +25,7 @@ function CategoryCard({ cateObj, onUpdate }) {
 
 CategoryCard.propTypes = {
   cateObj: PropTypes.shape({
-    category: PropTypes.number,
+    id: PropTypes.number,
     category_name: PropTypes.string,
     user_id: PropTypes.number,
     vendor_id: PropTypes.number,
