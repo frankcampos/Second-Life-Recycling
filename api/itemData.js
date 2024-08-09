@@ -63,7 +63,8 @@ const getSingleItem = (id) => new Promise((resolve, reject) => {
 const searchItems = (searchValue) => new Promise((resolve, reject) => {
   getItems()
     .then((items) => {
-      const filteredItems = items.filter((item) => item.item_name.toLowerCase().includes(searchValue.toLowerCase()));
+      const filteredItems = items.filter((item) => item.item_name.toLowerCase().includes(searchValue.toLowerCase())
+        || item.category.category_name.toLowerCase().includes(searchValue.toLowerCase()));
       resolve(filteredItems);
     })
     .catch(reject);

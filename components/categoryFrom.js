@@ -35,7 +35,7 @@ function CategoryForm({ cate }) {
   const handleSubmit = (e) => {
     e.preventDefault(); {
       const payload = { ...catInput, user_id: user.id };
-      createCategory(payload).then(() => router.push('/'));
+      createCategory(payload).then(() => router.push('/category'));
     }
   };
 

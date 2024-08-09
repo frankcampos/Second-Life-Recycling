@@ -12,8 +12,8 @@ const getCategory = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteCategory = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}//categories`, {
+const deleteCategory = (category) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/categories/${category}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -47,6 +47,7 @@ const getSingleCategory = () => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
+
 export {
   getCategory, getSingleCategory, createCategory, deleteCategory,
 };
