@@ -2,14 +2,14 @@ module.exports = {
   extends: ['next', 'next/core-web-vitals', 'prettier', 'airbnb'],
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 12,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react', 'prettier'],
   rules: {
@@ -20,15 +20,15 @@ module.exports = {
     'react/jsx-filename-extension': [
       1,
       {
-        extensions: ['.js', '.jsx'],
-      },
+        extensions: ['.js', '.jsx']
+      }
     ],
     'react/jsx-one-expression-per-line': [0],
     'no-console': [
       1,
       {
-        allow: ['error', 'warn'],
-      },
+        allow: ['error', 'warn']
+      }
     ],
     'comma-dangle': ['error'],
     'no-debugger': 1,
@@ -37,24 +37,38 @@ module.exports = {
     'no-plusplus': [
       2,
       {
-        allowForLoopAfterthoughts: true,
-      },
+        allowForLoopAfterthoughts: true
+      }
     ],
     'jsx-a11y/label-has-associated-control': [
       'error',
       {
         required: {
-          some: ['nesting', 'id'],
-        },
-      },
+          some: ['nesting', 'id']
+        }
+      }
     ],
     'jsx-a11y/label-has-for': [
       'error',
       {
         required: {
-          some: ['nesting', 'id'],
-        },
-      },
-    ],
+          some: ['nesting', 'id']
+        }
+      }
+    ]
   },
+  // You might want to additionally set this in monorepos where Next.js app is in a subdir
+  'root': true,
+  "extends": ["next/core-web-vitals"],
+  "overrides": [
+    {
+      // Adapt to your needs (e.g. some might want to only override "next.config.js")
+      "files": ["*.js"],
+      // This is the default parser of ESLint
+      "parser": "espree",
+      "parserOptions": {
+        "ecmaVersion": 2020
+      }
+    }
+  ]
 };

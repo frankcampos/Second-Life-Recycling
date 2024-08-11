@@ -10,7 +10,7 @@ import { getCategory, createCategory } from '../api/categoryData';
 const initialState = {
   category: 1,
   category_name: '',
-  vendor_id: 1,
+  vendor_id: 1
 };
 
 function CategoryForm({ cate }) {
@@ -28,7 +28,7 @@ function CategoryForm({ cate }) {
     const { name, value } = e.target;
     setCatInput((prevFormInput) => ({
       ...prevFormInput,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -83,12 +83,12 @@ CategoryForm.propTypes = {
     category: PropTypes.number,
     category_name: PropTypes.string,
     user_id: PropTypes.number,
-    vendor_id: PropTypes.number,
-  }),
+    vendor_id: PropTypes.number
+  })
 };
 
 CategoryForm.defaultProps = {
-  cate: initialState,
+  cate: initialState
 };
 
 export default CategoryForm;

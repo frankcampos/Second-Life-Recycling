@@ -28,9 +28,9 @@ CategoryCard.propTypes = {
     id: PropTypes.number,
     category_name: PropTypes.string,
     user_id: PropTypes.number,
-    vendor_id: PropTypes.number,
+    vendor_id: PropTypes.number
   }).isRequired,
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired
 };
 
 export default CategoryCard;

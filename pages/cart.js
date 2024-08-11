@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -5,6 +6,7 @@ import { useRouter } from 'next/router';
 import CartItem from '../components/CartItem';
 import { displayItem, removeItem, checkoutCart } from '../api/cartData';
 import Loading from '../components/Loading';
+import { useShoppingCart } from '../utils/context/ShoppingCartContext';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState({ cart_items: [], total: 0 });
@@ -12,9 +14,11 @@ const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const router = useRouter();
+  const { shoppingCartId } = useShoppingCart();
 
   useEffect(() => {
-    displayItem({ shopping_cart_id: 1 })
+
+    displayItem({ shopping_cart_id: shoppingCartId })
       .then((data) => {
         setCartItems(data);
         setLoading(false);
@@ -26,7 +30,7 @@ const Cart = () => {
   }, []);
 
   const handleRemoveItem = (itemId) => {
-    removeItem({ shopping_cart_id: 1, item_id: itemId })
+    removeItem({ shopping_cart_id: shoppingCartId, item_id: itemId })
       .then(() => {
         setCartItems((prevState) => {
           const updatedItems = prevState.cart_items.filter((item) => item.item.id !== itemId);
@@ -35,7 +39,7 @@ const Cart = () => {
           return {
             ...prevState,
             cart_items: updatedItems,
-            total: updatedTotal,
+            total: updatedTotal
           };
         });
       })
@@ -44,7 +48,7 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    checkoutCart({ shopping_cart_id: 1 })
+    checkoutCart({ shopping_cart_id: shoppingCartId })
       .then(() => {
         setCartItems({ cart_items: [], total: 0 });
         setModalMessage('Thank you for shopping!');
@@ -72,7 +76,7 @@ const Cart = () => {
         minHeight: '80vh',
         padding: '30px',
         maxWidth: '800px',
-        margin: '0 auto',
+        margin: '0 auto'
       }}
     >
       <div className="text-center" style={{ width: '100%' }}>
@@ -84,7 +88,7 @@ const Cart = () => {
             overflowY: 'auto',
             border: '1px solid #ddd',
             padding: '10px',
-            borderRadius: '5px',
+            borderRadius: '5px'
           }}
         >
           {cartItems.cart_items.length > 0 ? (

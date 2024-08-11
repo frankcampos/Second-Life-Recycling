@@ -5,12 +5,17 @@ import { getSingleItem } from '../../api/itemData';
 import ViewItemCard from '../../components/SingleItemCard';
 import { addToCart } from '../../api/cartData';
 import { useAuth } from '../../utils/context/authContext';
+import { useShoppingCart } from '../../utils/context/ShoppingCartContext';
+
 
 export default function ViewItem() {
   const [editobj, setEditobj] = useState({});
   const router = useRouter();
   const { id } = router.query;
   const { user } = useAuth();
+  const { updateShoppingCartId } = useShoppingCart();
+
+
 
   useEffect(() => {
     if (id) {
@@ -23,7 +28,9 @@ export default function ViewItem() {
   const handleAddToCart = () => {
     if (editobj.id && user) {
       addToCart({ itemId: editobj.id, userId: user.id })
-        .then(() => {
+        .then((respond) => {
+          console.warn('shooping_cart id', respond.cart.id)
+          updateShoppingCartId(respond.cart.id);
           alert(`${editobj.item_name} added to cart!`);
         })
         .catch((error) => {
@@ -34,7 +41,6 @@ export default function ViewItem() {
       alert('User is not authenticated.');
     }
   };
-
   return (
     <>
       <ViewItemCard itemObj={editobj} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Spinner,
+  Spinner
 } from 'react-bootstrap';
 
 export default function Loading() {
@@ -11,7 +11,7 @@ export default function Loading() {
         style={{
           color: '#00BF67',
           width: '100px',
-          height: '100px',
+          height: '100px'
         }}
       />
     </div>

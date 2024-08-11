@@ -11,7 +11,7 @@ function CartItem({ item, onDelete }) {
 
   return (
     <Card style={{
-      width: '30rem', height: '12rem', margin: '10px', display: 'flex', flexDirection: 'row',
+      width: '30rem', height: '12rem', margin: '10px', display: 'flex', flexDirection: 'row'
     }}
     >
       <Card.Img
@@ -19,11 +19,11 @@ function CartItem({ item, onDelete }) {
         src={item.image_url}
         alt={item.item_name}
         style={{
-          height: '100%', objectFit: 'cover', width: '30%', maxWidth: '150px',
+          height: '100%', objectFit: 'cover', width: '30%', maxWidth: '150px'
         }}
       />
       <Card.Body style={{
-        display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '70%',
+        display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '70%'
       }}
       >
         <Card.Title style={{ fontSize: '1.25rem' }}>{item.item_name}</Card.Title>
@@ -39,9 +39,9 @@ CartItem.propTypes = {
     id: PropTypes.number.isRequired,
     item_name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
-    image_url: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired
   }).isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
 };
 
 export default CartItem;
