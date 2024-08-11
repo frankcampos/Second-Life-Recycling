@@ -44,7 +44,7 @@ function CategoryForm({ cate }) {
       <h2 className="text-black mt-5"> Create Category </h2>
       <FloatingLabel controlId="floatingInput2" label="Item Category" className="mb-3">
         <Form.Control
-          type="number"
+          type="hidden"
           placeholder="Item Category number"
           name="category"
           value={catInput.category}
