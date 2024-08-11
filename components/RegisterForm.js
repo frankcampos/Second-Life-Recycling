@@ -10,14 +10,14 @@ function RegisterForm({ user, updateUser }) {
     last_name: '',
     photo: '',
     email: '',
-    uid: user.uid,
+    uid: user.uid
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -90,9 +90,9 @@ function RegisterForm({ user, updateUser }) {
 
 RegisterForm.propTypes = {
   user: PropTypes.shape({
-    uid: PropTypes.string.isRequired,
+    uid: PropTypes.string.isRequired
   }).isRequired,
-  updateUser: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired
 };
 
 export default RegisterForm;

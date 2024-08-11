@@ -8,7 +8,7 @@ import {
   Nav,
   Button,
   Form,
-  FormControl,
+  FormControl
 } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { signOut } from '../utils/auth';

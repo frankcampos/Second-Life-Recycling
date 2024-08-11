@@ -30,9 +30,9 @@ ViewItemCard.propTypes = {
     price: PropTypes.number,
     category_id: PropTypes.number,
     description: PropTypes.string,
-    id: PropTypes.string,
+    id: PropTypes.string
   }).isRequired,
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired
 };
 
 export default ViewItemCard;

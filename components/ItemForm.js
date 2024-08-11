@@ -16,7 +16,7 @@ const initialState = {
   image_url: '',
   description: '',
   category: 1,
-  vendor_id: 1,
+  vendor_id: 1
 };
 
 function ItemForm({ obj }) {
@@ -38,7 +38,7 @@ function ItemForm({ obj }) {
     const { name, value } = e.target;
     setFormInput((prevFormInput) => ({
       ...prevFormInput,
-      [name]: value,
+      [name]: value
     }));
   };
   const handleSubmit = (e) => {
@@ -97,6 +97,7 @@ function ItemForm({ obj }) {
           <option>Select a Category</option>
           {
            categories.map((cat) => (
+             // eslint-disable-next-line react/jsx-key
              <option value={cat.id}>{cat.category_name}
              </option>
            ))
@@ -138,12 +139,12 @@ ItemForm.propTypes = {
     description: PropTypes.string,
     category: PropTypes.number,
     user_id: PropTypes.number,
-    vendor_id: PropTypes.number,
-  }),
+    vendor_id: PropTypes.number
+  })
 };
 
 ItemForm.defaultProps = {
-  obj: initialState,
+  obj: initialState
 };
 
 export default ItemForm;

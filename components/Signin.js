@@ -17,7 +17,7 @@ function Signin() {
         width: '100%',
         minWidth: '50rem',
         paddingBlock: '0 5rem',
-        backgroundColor: '#eeffda',
+        backgroundColor: '#eeffda'
       }}
     >
       <h1 className="login">Reduce Reuse Recycle</h1>
